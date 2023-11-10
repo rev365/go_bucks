@@ -10,5 +10,12 @@ gem "sqlite3"
 
 gem "sprockets-rails"
 
-# Start debugger with binding.b [https://github.com/ruby/debug]
-# gem "debug", ">= 1.0.0"
+gem "devise", '~> 4.9', ">= 4.9.3"
+
+group :development, :test do
+  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem "rspec-rails", ">= 6.0.0"
+  gem "factory_bot_rails", ">= 6.2.0"
+  gem "faker"
+end

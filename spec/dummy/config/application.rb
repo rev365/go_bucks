@@ -17,6 +17,7 @@ require "action_cable/engine"
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
+require "go_bucks"
 
 module Dummy
   class Application < Rails::Application
@@ -24,11 +25,6 @@ module Dummy
 
     # For compatibility with applications that use this config
     config.action_controller.include_all_helpers = false
-
-    # Please, add to the `ignore` list any other `lib` subdirectories that do
-    # not contain `.rb` files, or that should not be reloaded or eager loaded.
-    # Common ones are `templates`, `generators`, or `middleware`, for example.
-    config.autoload_lib(ignore: %w(assets tasks))
 
     # Configuration for the application, engines, and railties goes here.
     #

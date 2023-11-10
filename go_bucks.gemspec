@@ -20,5 +20,5 @@ Gem::Specification.new do |spec|
     Dir["{app,config,db,lib}/**/*", "Rakefile", "README.md"]
   end
 
-  spec.add_dependency "rails", ">= 7.0.7.1"
+  spec.add_dependency "rails", '~> 7.0', ">= 7.0.7.1"
 end
