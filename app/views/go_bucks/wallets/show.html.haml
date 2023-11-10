@@ -1,0 +1,8 @@
+%p#notice= notice
+
+%p
+  - if @wallet
+    %b Balance:
+    = @wallet.balance
+  - else
+    = button_to "Setup wallet"

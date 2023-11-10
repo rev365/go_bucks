@@ -11,6 +11,26 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2023_11_10_140253) do
+  create_table "go_bucks_transactions", force: :cascade do |t|
+    t.integer "from_wallet_id"
+    t.integer "to_wallet_id", null: false
+    t.bigint "amount"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["from_wallet_id"], name: "index_go_bucks_transactions_on_from_wallet_id"
+    t.index ["to_wallet_id"], name: "index_go_bucks_transactions_on_to_wallet_id"
+  end
+
+  create_table "go_bucks_wallets", force: :cascade do |t|
+    t.integer "balance", default: 0, null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_go_bucks_wallets_on_user_id"
+    t.check_constraint "balance >= 0", name: "balance_check"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -23,4 +43,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_10_140253) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "go_bucks_transactions", "go_bucks_wallets", column: "from_wallet_id"
+  add_foreign_key "go_bucks_transactions", "go_bucks_wallets", column: "to_wallet_id"
+  add_foreign_key "go_bucks_wallets", "users"
 end
