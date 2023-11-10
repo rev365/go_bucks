@@ -21,4 +21,6 @@ Gem::Specification.new do |spec|
   end
 
   spec.add_dependency "rails", '~> 7.0', ">= 7.0.7.1"
+  spec.add_dependency "haml-rails", "~> 2.1", ">= 2.1.0"
+  spec.add_dependency "devise", '~> 4.9', ">= 4.9.3"
 end
