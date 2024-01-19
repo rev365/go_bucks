@@ -23,4 +23,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency "rails", '~> 7.0', ">= 7.0.7.1"
   spec.add_dependency "haml-rails", "~> 2.1", ">= 2.1.0"
   spec.add_dependency "devise", '~> 4.9', ">= 4.9.3"
+  spec.add_dependency "will_paginate", '~> 3.1', ">= 3.1.7"
 end

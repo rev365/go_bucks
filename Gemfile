@@ -11,6 +11,7 @@ gem "sqlite3"
 gem "sprockets-rails"
 gem "haml-rails", "~> 2.1", ">= 2.1.0"
 gem "devise", '~> 4.9', ">= 4.9.3"
+gem 'will_paginate', '~> 3.1.7'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
