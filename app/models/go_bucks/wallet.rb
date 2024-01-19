@@ -16,5 +16,7 @@ module GoBucks
     rescue ActiveRecord::StatementInvalid
       raise InvalidAmount, "Not enough balance."
     end
+
+    delegate :name, to: :user, prefix: true
   end
 end

@@ -1,0 +1,28 @@
+- if flash
+  - flash.each do |alert_level, message|
+    #flash{:class => "alert alert-#{flash[:error] ? 'danger' : 'success'}"}
+      %p{:class => "#{alert_level.to_s.downcase}"}
+        = message
+
+%h1 Grant 
+
+= form_with(url: grant_path, method: :post, local: true) do |form|
+  .input-group.btn-group
+    %input#amountTextfield.form-control.searchTextfield{name: 'amount', type: "number", value: params['amount'], min: 0, max: 1000}
+    %button.btn.btn-primary#grantBtn{type: 'submit'}Grant
+
+  %table
+    %thead
+      %tr
+        %th Select
+        %th Wallet
+        %th Balance
+
+    %tbody
+      - @wallets.each do |wallet|
+        %tr
+          %td= check_box_tag('ids[]', wallet.id, @grant.include?(wallet.id))
+          %td= wallet.user_name
+          %td= wallet.balance
+
+= will_paginate @wallets
