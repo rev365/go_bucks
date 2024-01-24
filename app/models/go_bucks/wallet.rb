@@ -2,6 +2,7 @@ module GoBucks
   class Wallet < ::ApplicationRecord
     attr_readonly :balance
     belongs_to :user
+    validates :balance, presence: true
 
     def deposit(amount)
       raise InvalidAmount, "Given #{amount} is below zero." if amount < 0

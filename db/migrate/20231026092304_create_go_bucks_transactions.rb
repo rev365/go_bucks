@@ -6,7 +6,8 @@ class CreateGoBucksTransactions < ActiveRecord::Migration[7.0]
         t.references :to_wallet, null: false
       end
 
-      t.bigint :amount
+      t.bigint :amount, null: false
+      t.string :type, index: true
       t.string :description
 
       t.timestamps

@@ -10,16 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_10_140253) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_26_092304) do
   create_table "go_bucks_transactions", force: :cascade do |t|
     t.integer "from_wallet_id"
     t.integer "to_wallet_id", null: false
-    t.bigint "amount"
+    t.bigint "amount", null: false
+    t.string "type"
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["from_wallet_id"], name: "index_go_bucks_transactions_on_from_wallet_id"
     t.index ["to_wallet_id"], name: "index_go_bucks_transactions_on_to_wallet_id"
+    t.index ["type"], name: "index_go_bucks_transactions_on_type"
   end
 
   create_table "go_bucks_wallets", force: :cascade do |t|

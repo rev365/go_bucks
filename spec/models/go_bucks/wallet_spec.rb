@@ -36,5 +36,9 @@ module GoBucks
         it { expect { wallet.withdraw(balance.next) }.to raise_error(InvalidAmount, "Not enough balance.") }
       end
     end
+
+    context 'validation' do
+      it { is_expected.to validate_presence_of(:balance) }
+    end
   end
 end
