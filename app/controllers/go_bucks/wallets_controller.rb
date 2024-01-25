@@ -2,12 +2,11 @@ module GoBucks
   class WalletsController < ::ApplicationController
     def show
       @wallet = GoBucks::Wallet.find_by(user: current_user)
-      render :layout => false
     end
 
     def create
       @wallet = GoBucks::Wallet.find_or_create_by(user: current_user)
-      render :show, layout: false
+      render :show
     end
 
     def reward

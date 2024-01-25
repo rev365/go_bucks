@@ -5,7 +5,6 @@ module GoBucks
     # GET /go_bucks/transactions
     def index
       @transactions = Transaction.for_wallet(@wallet)
-      render :layout => false
     end
 
     private
