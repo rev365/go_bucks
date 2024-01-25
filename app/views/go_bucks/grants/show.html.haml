@@ -21,7 +21,7 @@
     %tbody
       - @wallets.each do |wallet|
         %tr
-          %td= check_box_tag('ids[]', wallet.id, @grant.include?(wallet.id))
+          %td= check_box_tag('ids[]', wallet.id, @selected_wallets.include?(wallet))
           %td= wallet.user_name
           %td= wallet.balance
 

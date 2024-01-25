@@ -12,9 +12,9 @@ module GoBucks
 
     def reward
       @rewardee = User.find_by(email: params[:email])
-      @transfer = Transfer.new(from: current_user, to: @rewardee, amount: 1)
+      @transfer = Transfer.to(@rewardee, from: current_user)
 
-      if @transfer.save
+      if @transfer.(1)
         flash[:alert] = @transfer.errors.full_messages.first
       else
         flash[:notice] = "Transfer success"
