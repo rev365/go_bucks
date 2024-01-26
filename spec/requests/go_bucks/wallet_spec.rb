@@ -15,6 +15,6 @@ RSpec.describe "GoBucks Wallet requests", type: :request do
   describe "POST /wallet" do
     subject { post '/go_bucks/wallet' }
 
-    it { is_expected.to eq(200) }
+    it { is_expected.to eq(302) }
   end
 end
