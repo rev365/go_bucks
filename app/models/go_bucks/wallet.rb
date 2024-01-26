@@ -20,6 +20,6 @@ module GoBucks
       raise InvalidAmount, "Not enough balance."
     end
 
-    delegate :name, to: :user, prefix: true
+    delegate :name, :email, to: :user, prefix: true
   end
 end

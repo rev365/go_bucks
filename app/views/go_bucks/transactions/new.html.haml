@@ -1,0 +1,20 @@
+%div.d-flex.justify-content-between.mb-2
+  %h1 Transfer Go Bucks
+
+= form_tag go_bucks.transactions_path do |form|
+  .row
+    .col-12
+      .form-group
+        %label Transfer to
+        = select_tag :email, options_from_collection_for_select(@wallets, :user_name, :user_email), include_blank: true, class: 'form-control select2'
+  .row
+    .col-12
+      .form-group
+        %label Amount
+        = number_field_tag :amount, min: 0
+
+  .row
+    .col-12
+      .form-group
+        = submit_tag 'Transfer', class: 'btn btn-primary'
+        = link_to "Cancel", :back, class: 'btn btn-secondary'
