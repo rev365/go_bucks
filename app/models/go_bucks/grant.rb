@@ -2,12 +2,13 @@ module GoBucks
   class Grant < Transaction
     def call(amount)
       ActiveRecord::Base.transaction do
-        update(
-          amount: amount,
-          description: "Granted #{amount} to #{to_wallet.user_name}"
-        )
+        if update(
+            amount: amount,
+            description: "Granted #{amount} to #{to_wallet&.user_name}"
+          )
 
-        to_wallet.deposit(self.amount)
+          to_wallet.deposit(self.amount)
+        end
       end
 
       valid?
