@@ -1,5 +1,7 @@
 module GoBucks
-  class TransactionsController < ApplicationController
+  class TransactionsController < ::ApplicationController
+    include ApplicationHelper
+
     before_action :set_wallet
 
     # GET /go_bucks/transactions

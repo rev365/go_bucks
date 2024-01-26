@@ -1,11 +1,13 @@
 module GoBucks
-  class WalletsController < ApplicationController
+  class WalletsController < ::ApplicationController
+    include ApplicationHelper
+
     def show
-      @wallet = GoBucks::Wallet.find_by(user: current_user)
+      @wallet = Wallet.find_by(user: current_user)
     end
 
     def create
-      @wallet = GoBucks::Wallet.find_or_create_by(user: current_user)
+      @wallet = Wallet.find_or_create_by(user: current_user)
       render :show
     end
 

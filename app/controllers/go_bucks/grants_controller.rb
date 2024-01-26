@@ -1,5 +1,7 @@
 module GoBucks
-  class GrantsController < ApplicationController
+  class GrantsController < ::ApplicationController
+    include ApplicationHelper
+
     before_action -> { @selected_wallets = Wallet.where(id: grant_params[:ids]) }
 
     def show
