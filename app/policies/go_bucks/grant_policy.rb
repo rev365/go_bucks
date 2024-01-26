@@ -1,10 +1,9 @@
 module GoBucks
   class GrantPolicy
-    attr_reader :user, :grant
+    attr_reader :user
 
-    def initialize(user, grant)
+    def initialize(user, _grant = nil)
       @user = user
-      @grant = grant
     end
 
     def show?

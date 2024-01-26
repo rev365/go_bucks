@@ -5,4 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   def name = email
+  def admin?() = email.include?('admin')
 end

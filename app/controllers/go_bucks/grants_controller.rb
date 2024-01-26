@@ -5,12 +5,12 @@ module GoBucks
     before_action -> { @selected_wallets = Wallet.where(id: grant_params[:ids]) }
 
     def show
-      authorize :show?
+      authorize Grant, :show?
       @wallets = Wallet.includes(:user).paginate(page: params[:page], per_page: 20)
     end
 
     def create
-      authorize :create?
+      authorize Grant, :create?
       @grants = @selected_wallets.map(&Grant)
 
       if @grants.none? { |grant| grant.(grant_params[:amount]) }
