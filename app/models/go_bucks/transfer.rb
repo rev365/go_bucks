@@ -20,6 +20,9 @@ module GoBucks
     def self.to(user, from:)
       from_wallet = Wallet.find_by(user: from)
       to_wallet = Wallet.find_by(user: user)
+
+      return ->(*) { false } unless to_wallet
+        
       new(to_wallet: to_wallet, from_wallet: from_wallet)
     end
   end
