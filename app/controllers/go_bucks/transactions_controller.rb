@@ -23,11 +23,9 @@ module GoBucks
       @transfer = Transfer.to(@recipient, from: current_user)
 
       if @transfer.(params[:amount])
-        @wallets = Wallet.without(@wallet)
-        flash[:error] = @transfer.errors.full_messages.first
-        render :new
+        redirect_to go_bucks.transactions_path, flash: { notice: "Transfer success" }
       else
-        redirect_to go_bucks.transactions_path, notice: "Transfer success"
+        redirect_to go_bucks.transactions_path, flash: { error: @transfer.errors.full_messages.first }
       end
     end
 
