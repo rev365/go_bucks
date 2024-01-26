@@ -4,7 +4,7 @@ module GoBucks
       ActiveRecord::Base.transaction do
         update(
           amount: amount,
-          description: "Transfered #{amount} GoBucks credits to #{to_wallet.user_name} from #{from_wallet.user_name}"
+          description: "Transfered #{amount} to #{to_wallet.user_name} from #{from_wallet.user_name}"
         )
 
         from_wallet.withdraw(self.amount)

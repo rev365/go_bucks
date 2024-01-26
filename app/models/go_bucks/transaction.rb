@@ -14,11 +14,11 @@ module GoBucks
     validates :amount, presence: true
 
     def from_wallet_name
-      from_wallet&.user&.name
+      from_wallet&.user_name
     end
 
     def to_wallet_name
-      to_wallet&.user&.name
+      to_wallet&.user_name
     end
 
     def self.to_proc

@@ -4,7 +4,7 @@ module GoBucks
       ActiveRecord::Base.transaction do
         update(
           amount: amount,
-          description: "Granted #{amount} GoBucks credits to #{to_wallet.user_name}"
+          description: "Granted #{amount} to #{to_wallet.user_name}"
         )
 
         to_wallet.deposit(self.amount)
