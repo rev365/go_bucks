@@ -2,12 +2,12 @@ require 'rails_helper'
 
 module GoBucks
   RSpec.describe Transfer, type: :model do
-    let(:transfer) { Transfer.new(from: user, to: recipient, amount: 10, description: 'Reward Points') }
+    let(:transfer) { Transfer.to(recipient, from: user) }
     let(:recipient) { create(:user, email: 'janedoe@example.com') }
     let(:user) { create(:user) }
 
-    describe '#save' do
-      subject { transfer.save }
+    describe '#call' do
+      subject { transfer.call(10) }
       let!(:user_wallet) { create(:wallet, user: user, balance: 10) }
       let!(:recipient_wallet) { create(:wallet, user: recipient, balance: 10) }
 
@@ -18,7 +18,7 @@ module GoBucks
       end
 
       context 'with invalid amount' do
-        let(:transfer) { Transfer.new(from: user, to: recipient, amount: -10) }
+        subject { transfer.call(-10) }
 
         it "transfers nothing" do
           expect { is_expected.to eq(false) }.to_not change(Transaction, :count)
