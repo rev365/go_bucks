@@ -7,6 +7,8 @@ module GoBucks
     # GET /go_bucks/transactions
     def index
       @transactions = Transaction.for_wallet(@wallet)
+        .paginate(page: params[:page], per_page: 20)
+        .includes(to_wallet: :user, from_wallet: :user)
     end
 
     def create

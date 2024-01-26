@@ -1,17 +1,20 @@
 %h1 Transactions
 
-%table
-  %thead
-    %tr
-      %th Transfered from
-      %th Transfered to
-      %th Transfered amount
-      %th Description
-
-  %tbody
-    - @transactions.each do |transaction|
+.horizontal-scroll
+  %table.table.table-striped#goBucksTransactionsTable
+    %thead
       %tr
-        %td= transaction&.from_wallet_name
-        %td= transaction.to_wallet_name
-        %td= transaction.amount
-        %td= transaction.description
+        %th Transfered from
+        %th Transfered to
+        %th Transfered amount
+        %th Description
+
+    %tbody
+      - @transactions.each do |transaction|
+        %tr
+          %td= transaction&.from_wallet_name
+          %td= transaction.to_wallet_name
+          %td= transaction.amount
+          %td= transaction.description
+
+= will_paginate @transactions
