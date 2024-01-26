@@ -25,4 +25,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency "devise", '~> 4.9', ">= 4.9.3"
   spec.add_dependency "will_paginate", '~> 3.1', ">= 3.1.7"
   spec.add_dependency "will_paginate-bootstrap4", '~> 0.2', ">= 0.2.2"
+  spec.add_dependency "pundit", "~> 2.3", ">= 2.3.0"
 end

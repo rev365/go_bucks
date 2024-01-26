@@ -5,16 +5,18 @@ module GoBucks
     before_action -> { @selected_wallets = Wallet.where(id: grant_params[:ids]) }
 
     def show
+      authorize :show?
       @wallets = Wallet.includes(:user).paginate(page: params[:page], per_page: 20)
     end
 
     def create
+      authorize :create?
       @grants = @selected_wallets.map(&Grant)
 
-      if @grants.all? { |grant| grant.(grant_params[:amount]) }
-        flash[:notice] = "Granted #{grant_params[:amount]} to each selected wallet."
-      else
+      if @grants.none? { |grant| grant.(grant_params[:amount]) }
         flash[:error] = @grants.detect(&:invalid?).errors.full_messages.join('. ')
+      else
+        flash[:notice] = "Granted #{grant_params[:amount]} to each selected wallet."
       end
 
       redirect_back(fallback_location: { action: "show" })

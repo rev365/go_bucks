@@ -7,7 +7,7 @@
 = form_with(url: grant_path, method: :post, local: true) do |form|
   .input-group.btn-group
     %input#amountTextfield.form-control{name: 'amount', type: "number", value: params['amount'], min: 0, max: 1000, placeholder: 'Place amount'}
-    %button.btn.btn-primary#grantBtn{type: 'submit', data: { confirm: "Grant #{params['amount']}" }}Grant
+    %button.btn.btn-primary#grantBtn{type: 'submit', data: { confirm: "Grant?" }}Grant
 
   .horizontal-scroll
     %table.table.table-striped#goBucksGrantTable
