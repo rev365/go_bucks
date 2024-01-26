@@ -1,7 +1,9 @@
 module GoBucks
   class Wallet < ::ApplicationRecord
-    attr_readonly :balance
+    attr_readonly :balance, :user_id
+
     belongs_to :user
+
     validates :balance, presence: true
 
     def deposit(amount)
