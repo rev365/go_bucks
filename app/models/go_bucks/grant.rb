@@ -15,9 +15,5 @@ module GoBucks
       errors.add(:amount, invalid.message)
       false
     end
-
-    def self.to_proc
-      -> wallet { new(to_wallet: wallet) }
-    end
   end
 end

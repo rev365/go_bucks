@@ -1,5 +1,5 @@
 module GoBucks
-  class GrantsController < ApplicationController
+  class GrantsController < ::ApplicationController
     before_action -> { @selected_wallets = Wallet.where(id: grant_params[:ids]) }
 
     def show
@@ -12,7 +12,7 @@ module GoBucks
       if @grants.all? { |grant| grant.(grant_params[:amount]) }
         flash[:notice] = "Granted #{grant_params[:amount]} to each selected wallet."
       else
-        flash[:error] = @grants.detect(&:invalid?).errors.full_messages
+        flash[:error] = @grants.detect(&:invalid?).errors.full_messages.join('. ')
       end
 
       redirect_back(fallback_location: { action: "show" })

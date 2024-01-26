@@ -1,7 +1,5 @@
 module GoBucks
   class Transfer < Transaction
-    validates :from, :to, :amount, :description, presence: true
-
     def call(amount)
       ActiveRecord::Base.transaction do
         update(
