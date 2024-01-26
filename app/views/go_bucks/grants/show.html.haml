@@ -2,8 +2,8 @@
 
 = form_with(url: grant_path, method: :post, local: true) do |form|
   .input-group.btn-group
-    %input#amountTextfield.form-control{name: 'amount', type: "number", value: params['amount'], min: 0, max: 1000}
-    %button.btn.btn-primary#grantBtn{type: 'submit'}Grant
+    %input#amountTextfield.form-control{name: 'amount', type: "number", value: params['amount'], min: 0, max: 1000, placeholder: 'Place amount'}
+    %button.btn.btn-primary#grantBtn{type: 'submit', data: { confirm: "Grant #{params['amount']}" }}Grant
 
   .horizontal-scroll
     %table.table.table-striped#goBucksGrantTable
@@ -20,4 +20,5 @@
             %td= wallet.user_name
             %td= wallet.balance
 
-= will_paginate @wallets
+= will_paginate @wallets, renderer: WillPaginate::ActionView::BootstrapLinkRenderer, list_classes: %w(pagination justify-content-center)
+ 

@@ -12,9 +12,9 @@
     %tbody
       - @transactions.each do |transaction|
         %tr
-          %td= transaction&.from_wallet_name
+          %td= transaction.from_wallet_name
           %td= transaction.to_wallet_name
           %td= transaction.amount
           %td= transaction.description
 
-= will_paginate @transactions
+= will_paginate @transactions, renderer: WillPaginate::ActionView::BootstrapLinkRenderer, list_classes: %w(pagination justify-content-center)
