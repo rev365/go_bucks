@@ -1,4 +1,8 @@
-%h1 Grant 
+%div.d-flex.justify-content-between.mb-2
+  %h1 Grant Go Bucks
+  %div= link_to 'My Wallet', go_bucks.root_path, class: 'btn btn-link'
+  %div= link_to 'My Transactions', go_bucks.grant_path, class: 'btn btn-link'
+%h2 Please select wallets
 
 = form_with(url: grant_path, method: :post, local: true) do |form|
   .input-group.btn-group
