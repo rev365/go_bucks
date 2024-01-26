@@ -1,5 +1,5 @@
 module GoBucks
-  class WalletsController < ::ApplicationController
+  class WalletsController < ApplicationController
     def show
       @wallet = GoBucks::Wallet.find_by(user: current_user)
     end
