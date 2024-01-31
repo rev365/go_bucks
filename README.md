@@ -7,27 +7,30 @@ To visit GoBucks Wallet:
 1. Click “GB$” navigation button near the top right corner.
 2. Click “Setup wallet" button to create new wallet.
 
-To list current user GoBucks transactions:
-1. Click “My Transactions” link near the header.
+To visit My Transactions:
+1. Visit GoBucks Wallet.
+2. Click “My Transactions” link near the header.
 
 To transfer GoBucks credits to another user:
-1. Click “Transfer Go Bucks” button.
-2. Select a user's wallet.
-3. Fill the amount.
-4. Click “Transfer” to send.
+1. Visit My Transactions.
+2. Click “Transfer Go Bucks” button.
+3. Select a user's wallet.
+4. Fill the amount.
+5. Click “Transfer” to send.
 
 ### For Admins
 
 To fund wallets with GoBucks credits:
-1. Click “Grant Go Bucks” button.
-2. Select checkboxes for the recipient wallets
-3. Fill the amount.
-4. Click “Grant” button.
+1. Visit GoBucks Wallet.
+2. Click “Grant Go Bucks” button.
+3. Select checkboxes for the recipient wallets
+4. Fill the amount.
+5. Click “Grant” button.
 
 ## Installation
 Add this line to your application's Gemfile:
 ```ruby
-gem 'go_bucks', github: 'rev365/go_bucks', ref: '647ca2ac1f615fe2d78d1ec40f92317b17776872'
+gem 'go_bucks', github: 'rev365/go_bucks', ref: '9fe7abeafbdb6987ea20f4fc685ac6f0d9546fb3'
 ```
 
 And then execute:
