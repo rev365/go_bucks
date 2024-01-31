@@ -2,7 +2,27 @@
 New internal incentive program to offer points to employees redeemable on “GoMarket”
 
 ## Usage
-How to use my plugin.
+
+To visit GoBucks Wallet:
+1. Click “GB$” navigation button near the top right corner.
+2. Click “Setup wallet" button to create new wallet.
+
+To list current user GoBucks transactions:
+1. Click “My Transactions” link near the header.
+
+To transfer GoBucks credits to another user:
+1. Click “Transfer Go Bucks” button.
+2. Select a user's wallet.
+3. Fill the amount.
+4. Click “Transfer” to send.
+
+### For Admins
+
+To fund wallets with GoBucks credits:
+1. Click “Grant Go Bucks” button.
+2. Select checkboxes for the recipient wallets
+3. Fill the amount.
+4. Click “Grant” button.
 
 ## Installation
 Add this line to your application's Gemfile:
