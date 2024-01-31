@@ -2,11 +2,11 @@ module GoBucks
   class GrantsController < ::ApplicationController
     include ApplicationHelper
 
-    before_action -> { @selected_wallets = Wallet.where(id: grant_params[:ids]) }
+    before_action -> { @selected_wallets = Wallet.except_user(current_user).where(id: grant_params[:ids]) }
 
     def show
       authorize Grant, :show?
-      @wallets = Wallet.includes(:user).paginate(page: params[:page], per_page: 20)
+      @wallets = Wallet.includes(:user).except_user(current_user).paginate(page: params[:page], per_page: 20)
     end
 
     def create

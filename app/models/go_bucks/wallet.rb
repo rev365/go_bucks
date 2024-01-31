@@ -6,6 +6,8 @@ module GoBucks
 
     validates :balance, presence: true
 
+    scope :except_user, ->(user) { where.not(user: user) }
+
     def deposit(amount)
       raise InvalidAmount, "Given #{amount} is below zero." if amount < 0
 
