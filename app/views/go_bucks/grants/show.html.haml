@@ -18,11 +18,11 @@
           %th Balance
 
       %tbody
-        - @wallets.each do |wallet|
+        - @users.each do |user|
           %tr
-            %td= check_box_tag('ids[]', wallet.id, @selected_wallets.include?(wallet))
-            %td= wallet.user_name
-            %td= wallet.balance
+            %td= check_box_tag('ids[]', user.id, @recipients.include?(user))
+            %td= user.name
+            %td= @wallet_for.fetch(user) { GoBucks::Wallet.new(user: user) }.balance
 
-= will_paginate @wallets, renderer: WillPaginate::ActionView::BootstrapLinkRenderer, list_classes: %w(pagination justify-content-center)
+= will_paginate @users, renderer: WillPaginate::ActionView::BootstrapLinkRenderer, list_classes: %w(pagination justify-content-center)
  

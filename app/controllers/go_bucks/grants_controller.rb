@@ -2,19 +2,24 @@ module GoBucks
   class GrantsController < ::ApplicationController
     include ApplicationHelper
 
-    before_action -> { @selected_wallets = Wallet.except_user(current_user).where(id: grant_params[:ids]) }
+    before_action -> { @recipients = User.without(current_user).where(id: grant_params[:ids]) }
 
     def show
       authorize Grant, :show?
-      @wallets = Wallet.includes(:user).except_user(current_user).paginate(page: params[:page], per_page: 20)
+      @wallet_for = Wallet.includes(:user).index_by(&:user)
+      @users = User.without(current_user).paginate(page: params[:page], per_page: 20)
     end
 
     def create
       authorize Grant, :create?
-      @grants = @selected_wallets.map(&Grant)
+      @wallet_for = Wallet.includes(:user).index_by(&:user)
+      @grants = @recipients
+        .map {|user| @wallet_for[user] || Wallet.new(user: user) }
+        .map(&Grant)
+        .each { |grant| grant.(grant_params[:amount]) }
 
-      if @grants.none? { |grant| grant.(grant_params[:amount]) }
-        flash[:error] = @grants.detect(&:invalid?).errors.full_messages.join('. ')
+      if invalid = @grants.detect(&:invalid?)
+        flash[:error] = invalid.errors.full_messages.join('. ')
       else
         flash[:notice] = "Granted #{grant_params[:amount]} to each selected wallet."
       end
