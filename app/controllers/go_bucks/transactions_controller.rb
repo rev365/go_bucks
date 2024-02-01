@@ -23,7 +23,7 @@ module GoBucks
       @transfer = Transfer.to(@recipient, from: current_user)
 
       if @transfer.(params[:amount])
-        redirect_to go_bucks.transactions_path, flash: { notice: "Transfer success" }
+        redirect_to go_bucks.transactions_path, flash: { notice: "Transfered #{params[:amount]} to #{@recipient.name}" }
       else
         redirect_to go_bucks.transactions_path, flash: { error: @transfer.errors.full_messages.first }
       end
