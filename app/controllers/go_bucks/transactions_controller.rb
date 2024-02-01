@@ -2,7 +2,7 @@ module GoBucks
   class TransactionsController < ::ApplicationController
     include ApplicationHelper
 
-    before_action :set_wallet
+    before_action :set_wallet, only: [:index]
 
     # GET /go_bucks/transactions
     def index
@@ -14,12 +14,12 @@ module GoBucks
 
     # GET /go_bucks/transactions/new
     def new
-      @wallets = Wallet.without(@wallet)
+      @users = User.without(current_user)
     end
 
     # POST /go_bucks/transactions
     def create
-      @recipient = User.find_by(email: params[:email])
+      @recipient = User.without(current_user).find_by!(email: params[:email])
       @transfer = Transfer.to(@recipient, from: current_user)
 
       if @transfer.(params[:amount])

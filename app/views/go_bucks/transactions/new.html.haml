@@ -6,7 +6,7 @@
     .col-12
       .form-group
         %label Transfer to
-        = select_tag :email, options_from_collection_for_select(@wallets, :user_email, :user_name), include_blank: true, class: 'form-control select2'
+        = select_tag :email, options_from_collection_for_select(@users, :email, :name), include_blank: true, class: 'form-control select2'
   .row
     .col-12
       .form-group

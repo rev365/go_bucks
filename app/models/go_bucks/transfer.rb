@@ -20,7 +20,7 @@ module GoBucks
 
     def self.to(user, from:)
       from_wallet = Wallet.find_by(user: from)
-      to_wallet = Wallet.find_by(user: user)
+      to_wallet = Wallet.find_or_create_by(user: user)
         
       new(to_wallet: to_wallet, from_wallet: from_wallet)
     end
