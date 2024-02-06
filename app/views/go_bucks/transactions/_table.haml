@@ -1,0 +1,21 @@
+.horizontal-scroll
+  %table.table.table-striped#goBucksTransactionsTable
+    %thead
+      %tr
+        %th Type
+        %th Transfered from
+        %th Transfered to
+        %th Transfered amount
+        %th Description
+        %th Transfered at
+    %tbody
+      - transactions.each do |transaction|
+        %tr
+          %td= transaction.type
+          %td= transaction.from_wallet_name
+          %td= transaction.to_wallet_name
+          %td= transaction.amount
+          %td= transaction.description
+          %td= transaction.created_at
+
+= will_paginate transactions, renderer: WillPaginate::ActionView::BootstrapLinkRenderer, list_classes: %w(pagination justify-content-center)
