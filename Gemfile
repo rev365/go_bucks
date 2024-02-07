@@ -25,4 +25,5 @@ end
 
 group :test do
   gem 'shoulda-matchers', '~> 5.3', '>= 5.3.0'
+  gem 'rails-controller-testing'
 end

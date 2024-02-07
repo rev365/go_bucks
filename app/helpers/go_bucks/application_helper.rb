@@ -3,10 +3,9 @@ module GoBucks
     extend ActiveSupport::Concern
 
     included do
-      Rails.application.routes.url_helpers.public_instance_methods.grep(/_url|_path/).each do |name|
-        delegate name, to: :main_app
-        helper_method name
-      end
+      url_helpers = Rails.application.routes.url_helpers.public_instance_methods.grep(/_url|_path/)
+      delegate *url_helpers, to: :main_app
+      helper_method *url_helpers
     end
   end
 end
