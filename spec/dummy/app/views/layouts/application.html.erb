@@ -7,11 +7,15 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application" %>
+
+    <link crossorigin='anonymous' href='https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css' integrity='sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N' rel='stylesheet'>
   </head>
 
   <body>
     <p><%= flash[:notice] || flash[:error] %></p>
-
-    <%= yield %>
+    <div id="main" class="container-fluid">
+      <%= render 'layouts/nav' %>
+      <%= yield %>
+    </div>
   </body>
 </html>

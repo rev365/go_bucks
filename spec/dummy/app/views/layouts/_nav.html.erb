@@ -1,0 +1,16 @@
+<header class="header top-nav">
+  <nav class="navbar">
+    <div class="navbar-holder d-flex align-items-center justify-content-end">
+      <div class="navbar-header">
+        <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
+          <li class="nav-item">
+            <%= link_to('GB$', "/go_bucks/wallet", title: 'Go Bucks', class: 'btn btn-secondary') %>
+          </li>
+          <li class="nav-item">
+            <%= user_signed_in? ? link_to("Log Out", destroy_user_session_path, method: :delete) : link_to("Log In", new_user_session_path) %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
