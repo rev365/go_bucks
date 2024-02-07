@@ -1,19 +1,20 @@
 %div.d-flex.justify-content-between.mb-2
   %h1 Grant Go Bucks
   %div= link_to 'My Transactions', go_bucks.transactions_wallet_path, class: 'btn btn-link'
-%h2 Please select wallets
 
 = form_with(url: grant_path, method: :post, local: true) do |form|
+  = hidden_field_tag :page, params[:page]
   .input-group.btn-group
     %input#amountTextfield.form-control{name: 'amount', type: "number", value: params['amount'], min: 0, max: 1000, placeholder: 'Place amount'}
     %button.btn.btn-primary#grantBtn{type: 'submit', data: { confirm: "Grant?" }}Grant
-
+  %h2 Please select recipients
+  
   .horizontal-scroll
     %table.table.table-striped#goBucksGrantTable
       %thead
         %tr
           %th Select
-          %th Wallet
+          %th Recipient
           %th Balance
 
       %tbody
@@ -21,7 +22,7 @@
           %tr
             %td= check_box_tag('ids[]', user.id, @recipients.include?(user))
             %td= user.name
-            %td= @wallet_for.fetch(user) { GoBucks::Wallet.new(user: user) }.balance
+            %td= user.wallet&.balance || 0
 
 = will_paginate @users, renderer: WillPaginate::ActionView::BootstrapLinkRenderer, list_classes: %w(pagination justify-content-center)
  
