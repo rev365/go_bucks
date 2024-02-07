@@ -7,12 +7,12 @@ To visit GoBucks Wallet:
 1. Click “GB$” navigation button near the top right corner.
 2. Click “Setup wallet" button to create new wallet.
 
-To visit My Transactions:
+To see My Transactions:
 1. Visit GoBucks Wallet.
 2. Click “My Transactions” link near the header.
 
 To transfer GoBucks credits to another user:
-1. Visit My Transactions.
+1. See My Transactions.
 2. Click “Transfer Go Bucks” button.
 3. Select a user's wallet.
 4. Fill the amount.
@@ -20,10 +20,14 @@ To transfer GoBucks credits to another user:
 
 ### For Admins
 
-To fund wallets with GoBucks credits:
+To see All Transactions:
 1. Visit GoBucks Wallet.
+2. Click “All Transactions” link near the header.
+
+To fund wallets with GoBucks credits:
+1. See All Transactions.
 2. Click “Grant Go Bucks” button.
-3. Select checkboxes for the recipient wallets
+3. Select checkboxes of the recipients
 4. Fill the amount.
 5. Click “Grant” button.
 
