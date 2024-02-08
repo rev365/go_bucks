@@ -14,7 +14,7 @@ To see My Transactions:
 To transfer GoBucks credits to another user:
 1. See My Transactions.
 2. Click “Transfer Go Bucks” button.
-3. Select a user's wallet.
+3. Select a recipient.
 4. Fill the amount.
 5. Click “Transfer” to send.
 
@@ -27,14 +27,14 @@ To see All Transactions:
 To fund wallets with GoBucks credits:
 1. See All Transactions.
 2. Click “Grant Go Bucks” button.
-3. Select checkboxes of the recipients
+3. Check checkboxes of recipients.
 4. Fill the amount.
 5. Click “Grant” button.
 
 ## Installation
 Add this line to your application's Gemfile:
 ```ruby
-gem 'go_bucks', github: 'rev365/go_bucks', ref: '9fe7abeafbdb6987ea20f4fc685ac6f0d9546fb3'
+gem 'go_bucks', github: 'rev365/go_bucks', ref: 'cee898a9589e66797f9294d5f37bc80f5488fe39'
 ```
 
 And then execute:
