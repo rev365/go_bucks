@@ -16,9 +16,7 @@ module GoBucks
     def create
       authorize Grant, :create?
 
-      @grants = @recipients
-        .map {|user| user.wallet || user.build_wallet }
-        .map(&Grant)
+      @grants = @recipients.map(&:wallet).map(&Grant)
         .each { |grant| grant.(grant_params[:amount]) }
 
       if invalid = @grants.detect(&:invalid?)
