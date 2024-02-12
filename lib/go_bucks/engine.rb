@@ -4,9 +4,7 @@ module GoBucks
     engine_name 'go_bucks'
 
     config.to_prepare do
-      Dir.glob(Engine.root.join("app", "decorators", "**", "*_decorator*.rb")) do |c|
-        Rails.configuration.cache_classes ? require(c) : load(c)
-      end
+      User.include UserDecorator unless User.included_modules.include? UserDecorator
     end
   end
 end

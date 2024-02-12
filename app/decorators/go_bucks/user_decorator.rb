@@ -10,5 +10,3 @@ module GoBucks
     def wallet_balance() = wallet.balance
   end
 end
-
-User.include UserDecorator
