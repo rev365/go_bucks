@@ -2,7 +2,7 @@ module GoBucks
   class WalletsController < ::ApplicationController
     include ApplicationHelper
 
-    before_action -> { @wallet = Wallet.find_or_create_by(user: current_user) }
+    before_action -> { @wallet = Wallet.find_by(user: current_user) }
 
     # GET /go_bucks/wallet
     def show
