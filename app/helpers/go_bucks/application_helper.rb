@@ -7,5 +7,13 @@ module GoBucks
       delegate *url_helpers, to: :main_app
       helper_method *url_helpers
     end
+
+    private
+
+      def recipient_scope
+        policy_scope(User, policy_scope_class: GoBucks::RecipientPolicy::Scope)
+          .without(current_user)
+          .includes(:wallet)
+      end
   end
 end

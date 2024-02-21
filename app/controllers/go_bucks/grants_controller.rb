@@ -3,8 +3,8 @@ module GoBucks
     include ApplicationHelper
 
     before_action -> do
-      @recipients = User.without(current_user).includes(:wallet).where(id: grant_params[:ids])
-           @users = User.without(current_user).includes(:wallet).paginate(page: page_param, per_page: 20)
+      @recipients = recipient_scope.where(id: grant_params[:ids])
+           @users = recipient_scope.paginate(page: page_param, per_page: 20)
     end
 
     # GET /go_bucks/grant

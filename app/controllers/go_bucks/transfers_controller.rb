@@ -2,7 +2,7 @@ module GoBucks
   class TransfersController < ::ApplicationController
     include ApplicationHelper
 
-    before_action -> { @users = User.without(current_user) }
+    before_action -> { @users = recipient_scope }
 
     # GET /go_bucks/transfer
     def show
@@ -10,7 +10,7 @@ module GoBucks
 
     # POST /go_bucks/transfer
     def create
-      @recipient = User.without(current_user).find_by(email: params[:email])
+      @recipient = recipient_scope.find_by(email: params[:email])
       @transfer = Transfer.to(@recipient, from: current_user)
 
       if @transfer.(params[:amount])
