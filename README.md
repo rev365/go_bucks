@@ -32,9 +32,10 @@ To fund wallets with GoBucks credits:
 5. Click “Grant” button.
 
 ## Installation
+
 Add this line to your application's Gemfile:
 ```ruby
-gem 'go_bucks', github: 'rev365/go_bucks', ref: 'cee898a9589e66797f9294d5f37bc80f5488fe39'
+gem 'go_bucks', github: 'rev365/go_bucks', ref: '30e0fb14e459abb426c152bf6cfba855f0f64069'
 ```
 
 And then execute:
@@ -55,4 +56,9 @@ $ rails db:migrate
 Add this line to your `config/routes.rb`:
 ```ruby
 mount GoBucks::Engine => "/go-bucks"
+```
+
+Generate pundit policies:
+```bash
+$ rails g pundit:policy go_bucks/recipient
 ```
