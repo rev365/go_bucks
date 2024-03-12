@@ -2,6 +2,14 @@
   %h1 Grant Go Bucks
   %div= link_to 'All Transactions', go_bucks.transactions_path, class: 'btn btn-link'
 
+%form#search-form{method: 'GET'}
+  .input-group.btn-group
+    %input#searchTextfield.form-control.searchTextfield{name: 'q',placeholder: "Search Recipients", type: "search", value: params[:q].to_s}
+    .input-group-append
+      %button.btn.btn-secondary#searchBtn{type: 'submit'}
+        %i.fas.fa-search
+  .input-group.btn-group
+
 = form_with(url: grant_path(page: params[:page]), method: :post, local: true) do |form|
   .input-group.btn-group
     %input#amountTextfield.form-control{name: 'amount', type: "number", value: params['amount'], min: 0, max: 1000, placeholder: 'Place amount'}

@@ -3,8 +3,8 @@ module GoBucks
     include ApplicationHelper
 
     before_action -> do
-      @recipients = recipient_scope.where(id: grant_params[:ids])
-           @users = recipient_scope.paginate(page: page_param, per_page: 20)
+      @recipients = search_recipients.where(id: grant_params[:ids])
+           @users = search_recipients.paginate(page: page_param, per_page: 20)
     end
 
     # GET /go_bucks/grant
@@ -29,6 +29,12 @@ module GoBucks
     end
 
     private
+
+      def search_recipients
+        return recipient_scope if params[:q].blank?
+
+        recipient_scope.search(params[:q])
+      end
 
       def grant_params
         params.permit(:amount, ids: [])

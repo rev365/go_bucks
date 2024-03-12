@@ -6,4 +6,6 @@ class User < ApplicationRecord
 
   def name = email
   def admin?() = email.include?('admin')
+
+  scope :search, ->(q) { where(table[:email].matches("%#{q}%")) }
 end
