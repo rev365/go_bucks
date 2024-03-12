@@ -6,7 +6,7 @@ Gem::Specification.new do |spec|
   spec.authors     = ["Ritchie Paul Buitre"]
   spec.email       = ["ritchie@richorelse.com"]
   spec.homepage    = "https://github.com/rev365/go_bucks"
-  spec.summary     = "New internal incentive program to offer points to employees redeemable on “GoMarket"
+  spec.summary     = 'New internal incentive program to offer points to employees redeemable on “GoMarket"'
   spec.description = spec.summary
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the "allowed_push_host"

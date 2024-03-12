@@ -2,8 +2,6 @@ module GoBucks
   class WalletsController < ::ApplicationController
     include ApplicationHelper
 
-    before_action -> { @wallet = Wallet.find_by(user: current_user) }
-
     # GET /go_bucks/wallet
     def show
     end
@@ -15,7 +13,7 @@ module GoBucks
 
     # GET /go_bucks/wallet/transactions
     def transactions
-      @transactions = Transaction.for_wallet(@wallet)
+      @transactions = Transaction.for_wallet(current_user.wallet)
         .paginate(page: params[:page], per_page: 20)
         .includes(to_wallet: :user, from_wallet: :user)
         .order(id: :desc)
