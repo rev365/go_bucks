@@ -10,7 +10,7 @@
         %i.fas.fa-search
   .input-group.btn-group
 
-= form_with(url: grant_path(page: params[:page]), method: :post, local: true) do |form|
+= form_with(url: go_bucks.grant_path(page: params[:page]), method: :post, local: true) do |form|
   .input-group.btn-group
     %input#amountTextfield.form-control{name: 'amount', type: "number", value: params['amount'], min: 0, max: 1000, placeholder: 'Place amount'}
     %button.btn.btn-primary#grantBtn{type: 'submit', data: { confirm: "Grant?" }}Grant

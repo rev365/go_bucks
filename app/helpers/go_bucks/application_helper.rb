@@ -15,5 +15,15 @@ module GoBucks
           .without(current_user)
           .includes(:wallet)
       end
+
+      def search_recipients
+        return recipient_scope if params[:q].blank?
+
+        recipient_scope.search(params[:q])
+      end
+
+      def page_param
+        params[:page].presence || 1
+      end
   end
 end
