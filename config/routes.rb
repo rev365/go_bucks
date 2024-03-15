@@ -1,4 +1,5 @@
 GoBucks::Engine.routes.draw do
+  resource :charge, only: [:show, :create]
   resource :grant, only: [:show, :create]
   resource :transfer, only: [:show, :create]
   resources :transactions, only: [:index]
