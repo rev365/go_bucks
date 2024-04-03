@@ -24,11 +24,18 @@ To fund wallets with GoBucks credits:
 4. Fill the amount.
 5. Click “Grant” button.
 
+To charge wallets:
+1. See All Transactions.
+2. Click “Grant Go Bucks” button.
+3. Click "Charge" button of recipients.
+4. Fill the amount.
+5. Click "Charge" button.
+
 ## Installation
 
 Add this line to your application's Gemfile:
 ```ruby
-gem 'go_bucks', github: 'rev365/go_bucks', ref: '30e0fb14e459abb426c152bf6cfba855f0f64069'
+gem 'go_bucks', github: 'rev365/go_bucks', ref: 'da44d7954060d74aed97dda39dc1c4ecb1aa5368'
 ```
 
 And then execute:
