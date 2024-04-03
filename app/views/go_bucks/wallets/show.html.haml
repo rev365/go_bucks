@@ -1,5 +1,6 @@
 %div.d-flex.justify-content-between.mb-2
   %h1 Go Bucks: Wallet
+  %div= link_to 'Grant Go Bucks', go_bucks.grant_path, class: 'btn btn-warning' if policy(GoBucks::Grant).create?
   %div= link_to 'My Transactions', go_bucks.transactions_wallet_path, class: 'btn btn-link'
   %div= link_to 'All Transactions', go_bucks.transactions_path, class: 'btn btn-link' if policy(GoBucks::Transaction).index?
 
