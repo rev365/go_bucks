@@ -11,13 +11,6 @@ To see My Transactions:
 1. Visit GoBucks Wallet.
 2. Click “My Transactions” link near the header.
 
-To transfer GoBucks credits to another user:
-1. See My Transactions.
-2. Click “Transfer Go Bucks” button.
-3. Select a recipient.
-4. Fill the amount.
-5. Click “Transfer” to send.
-
 ### For Admins
 
 To see All Transactions:

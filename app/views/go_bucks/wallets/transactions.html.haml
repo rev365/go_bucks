@@ -1,6 +1,5 @@
 %div.d-flex.justify-content-between.mb-2
   %h1 Go Bucks: My Transactions
   %div= link_to 'All Transactions', go_bucks.transactions_path, class: 'btn btn-link' if policy(GoBucks::Transaction).index?
-  %div= link_to 'Transfer Go Bucks', go_bucks.transfer_path, class: 'btn btn-success'
 
 = render 'go_bucks/transactions/table', transactions: @transactions
