@@ -35,7 +35,7 @@ To charge wallets:
 
 Add this line to your application's Gemfile:
 ```ruby
-gem 'go_bucks', github: 'rev365/go_bucks', ref: 'da44d7954060d74aed97dda39dc1c4ecb1aa5368'
+gem 'go_bucks', github: 'rev365/go_bucks', ref: 'e5d2d81f17f167b7b9f034ae3292b9014b5a5d19'
 ```
 
 And then execute:
@@ -61,4 +61,7 @@ mount GoBucks::Engine => "/go-bucks"
 Generate pundit policies:
 ```bash
 $ rails g pundit:policy go_bucks/recipient
+$ rails g pundit:policy go_bucks/transaction
+$ rails g pundit:policy go_bucks/grant
+$ rails g pundit:policy go_bucks/charge
 ```
