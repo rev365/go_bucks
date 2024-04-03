@@ -1,10 +1,10 @@
 %div.d-flex.justify-content-between.mb-2
   %h1 Charge Go Bucks
-  %div= link_to 'All Transactions', go_bucks.transactions_path, class: 'btn btn-link'
+  %div= link_to 'Grant Go Bucks', go_bucks.grant_path, class: 'btn btn-warning'
 
-%form#search-form{method: 'GET'}
+%form#search-form{method: 'GET', data: {controller: 'filter'}, "data-filter-frame-value": "recipients"}
   .input-group.btn-group
-    %input#searchTextfield.form-control.searchTextfield{name: 'q',placeholder: "Search Recipients", type: "search", value: params[:q].to_s}
+    %input#searchTextfield.form-control.searchTextfield{name: 'q',placeholder: "Search Recipients", type: "search", value: params[:q].to_s, data: {action: "input->filter#submit"}}
     .input-group-append
       %button.btn.btn-secondary#searchBtn{type: 'submit'}
         %i.fas.fa-search
@@ -13,23 +13,24 @@
 = form_with(url: go_bucks.charge_path(page: params[:page]), method: :post, local: true) do |form|
   .input-group.btn-group
     %input#amountTextfield.form-control{name: 'amount', type: "number", value: params['amount'], min: 0, max: 1000, placeholder: 'Place amount'}
-    %button.btn.btn-primary#grantBtn{type: 'submit', data: { confirm: "Grant?" }}Charge
+    %button.btn.btn-danger#grantBtn{type: 'submit', data: { confirm: "Grant?" }}Charge
   %h2 Please select recipients
   
-  .horizontal-scroll
-    %table.table.table-striped#goBucksGrantTable
-      %thead
-        %tr
-          %th Select
-          %th Recipient
-          %th Balance
-
-      %tbody
-        - @users.each do |user|
+  %turbo-frame(id="recipients")
+    .horizontal-scroll
+      %table.table.table-striped#goBucksGrantTable
+        %thead
           %tr
-            %td= check_box_tag('ids[]', user.id, @recipients.include?(user))
-            %td= user.name
-            %td= user.wallet_balance
+            %th Select
+            %th Recipient
+            %th Balance
 
-= will_paginate @users, renderer: WillPaginate::ActionView::BootstrapLinkRenderer, list_classes: %w(pagination justify-content-center)
+        %tbody
+          - @users.each do |user|
+            %tr
+              %td= check_box_tag('ids[]', user.id, @recipients.include?(user))
+              %td= user.name
+              %td= user.wallet_balance
+
+    = will_paginate @users, renderer: WillPaginate::ActionView::BootstrapLinkRenderer, list_classes: %w(pagination justify-content-center)
  

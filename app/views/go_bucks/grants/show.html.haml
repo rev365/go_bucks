@@ -2,9 +2,9 @@
   %h1 Grant Go Bucks
   %div= link_to 'All Transactions', go_bucks.transactions_path, class: 'btn btn-link'
 
-%form#search-form{method: 'GET', data: {controller: 'filter'}, "data-filter-frame-value": "grants"}
+%form#search-form{method: 'GET', data: {controller: 'filter'}, "data-filter-frame-value": "recipients"}
   .input-group.btn-group
-    %input#searchTextfield.form-control.searchTextfield{name: 'q',placeholder: "Search Recipients", type: "search", value: params[:q].to_s, data: {action: "input->filter#submit"} }
+    %input#searchTextfield.form-control.searchTextfield{name: 'q',placeholder: "Search Recipients", type: "search", value: params[:q].to_s, data: {action: "input->filter#submit"}}
     .input-group-append
       %button.btn.btn-secondary#searchBtn{type: 'submit'}
         %i.fas.fa-search
@@ -16,7 +16,7 @@
     %button.btn.btn-primary#grantBtn{type: 'submit', data: { confirm: "Grant?" }}Grant
   %h2 Please select recipients
   
-  %turbo-frame(id="grants")
+  %turbo-frame(id="recipients")
     .horizontal-scroll
       %table.table.table-striped#goBucksGrantTable
         %thead
@@ -31,6 +31,7 @@
               %td= check_box_tag('ids[]', user.id, @recipients.include?(user))
               %td= user.name
               %td= user.wallet_balance
+              %td= link_to 'Charge', go_bucks.charge_path(q: user.email, ids: [user.id]), class: 'btn btn-danger' unless user.wallet_balance.zero?
 
     = will_paginate @users, renderer: WillPaginate::ActionView::BootstrapLinkRenderer, list_classes: %w(pagination justify-content-center)
  
